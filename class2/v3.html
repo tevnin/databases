@@ -1,0 +1,131 @@
+<!-- Third Iteration of HW 1
+		 Albums now an array of objects belonging to artists, so each artist can have many albums
+		 also incorporating genres
+		 adding albums to an artist-->
+
+<!doctype html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+		<script>
+		
+			var musicArray = [
+				{
+					artist:"Rosi Golan",
+					albums:[
+						{
+							title:"The Drifter and the Gypsy",
+							genre: "folk",
+							year:"2008",
+							songs:["Think of Me", "Slide", "I Don't Wanna Wait", "Yesteryear", "Come Around", "Hazy (Featuring William Fitzsimmons)", "The Drifter and The Gypsy", "C'est L'amour", "Lullaby", "Shine", "Been a Long Day"]
+						}
+					]
+					
+				},
+				{
+					artist:"Delicate Steve",
+					albums:[
+						{
+							title:"Wondervisions",
+							genre: "alternative rock",
+							year:"2011",
+							songs:["Welcome-Begin", "The Ballad Of Speck And Pebble", "Source (Connection)", "Sugar Splash", "Attitude/Gratitude", "Source (Construction)", "Wondervisions", "Z Expressions", "Don't Get Stuck (Proud Elephants)", "Source (Bridge)", "Butterfly"]
+						}
+					]
+					
+				},
+				{
+					artist:"Adele",
+					albums:[
+						{
+							title:"21",
+							genre: "pop",
+							year:"2011",
+							songs:["Rolling in the Deep", "Rumour Has It", "Turning Tables", "Don't You Remember", "Set Fire to the Rain", "He Won't Go", "Take It All", "I'll Be Waiting", "One and Only", "Lovesong", "Someone Like You", "If It Hadn't Been For Love", "Hiding My Heart"]
+						}
+					]
+					
+				},
+				{
+					artist:"Arcade Fire",
+					albums:[
+						{
+							title:"Funeral",
+							genre: "alternative & punk",
+							year:"2004",
+							songs:["Neighborhood #1 (Tunnels)", "Neighborhood #2 (Laika)", "Une Annee Sans Lumiere", "Neighborhood #3 (Power Out)", "Neighborhood #4 (7 Kettles)", "Crown of Love", "Wake Up", "Haiti", "Rebellion (Lies)", "In the Backseat"]
+						},
+						{
+							title:"The Suburbs",
+							genre: "alternative rock",
+							year:"2010",
+							songs:["The Suburbs", "Ready To Start", "Modern Man", "Rococo", "Empty Room", "City With No Children", "Half Light I", "Half Light II (No Celebration)", "Suburban War", "Month Of May", "Wasted Hours", "Deep Blue", "We Used To Wait", "Sprawl I (Flatland)", "Sprawl II (Mountains Beyond Mountains)", "The Suburbs (Continued)"]
+						}
+					]
+				}
+			];
+			
+			//how do I access musicArray element where artist = Adele?
+			musicArray[2].albums.unshift(
+				{
+					title:"19",
+					genre:"",
+					year:"2008",
+					songs:["Daydreamer","Best For Last","Chasing Pavements","Cold Shoulder","Crazy For You","Melt My Heart To Stone","First Love","Right As Rain","Make You Feel My Love","My Same","Tired", "Hometown Glory"]
+				}
+			);
+			
+			console.log(musicArray);
+			
+			for(var i=0; i<musicArray.length; i++){
+				for(var j=0; j<musicArray[i].albums.length; j++){
+					document.write("<section id='artist'><h2>"+musicArray[i].artist +"</h2>");
+					document.write("<h3>"+musicArray[i].albums[j].title+"</h3>");
+					document.write("<h3>"+musicArray[i].albums[j].genre+"</h3>");
+					document.write("<h3>"+musicArray[i].albums[j].year+"</h3><ul class='songs'>");
+					
+					
+					for(var k=0; k<musicArray[i].albums[j].songs.length;k++){
+						document.write("<li>"+musicArray[i].albums[j].songs[k]+"</li>");
+					}
+					document.write("</ul></section>");
+					
+					if(musicArray[i].albums[j].genre == "alternative rock"){
+						console.log("Alternative Rock Album!!");
+					}
+					
+				}
+				
+			}
+			
+			//start cool jquery shit
+			$(document).ready(function(){
+				$('.songs').hide();
+				
+				$('#artist').click(function(){
+					$('.songs').fadeIn();
+				});
+				
+				$('.songs').click(function(){
+					$('.songs').slideUp().slideDown();
+				});
+			});
+			
+		
+		</script>
+
+		<style>
+			body{
+				background-color:#F531D7;
+				color: #fff;
+			}
+			#artist{
+				margin-bottom: 50px;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+	</body>
+</html>
