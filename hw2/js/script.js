@@ -329,9 +329,7 @@ console.log(musicArray);
 
 document.write("<section id=\"page\">");
 
-for(var i=0; i<musicArray.length; i++){
-	
-	
+for(var i=0; i<musicArray.length; i++){	
 	for(var j=0; j<musicArray[i].albums.length; j++){
 		document.write("<section class='artist' id='"+ i + "-" + j +"'>");
 		document.write("<img src=\""+musicArray[i].albums[j].cover+"\" alt="+musicArray[i].albums[j]+"album cover\" width=\"300\" height=\"300\" />")
@@ -349,13 +347,14 @@ for(var i=0; i<musicArray.length; i++){
 $(document).ready(function(){
 	
 	$(".artist").click(function(){
+		$("#directions").fadeOut();
 		var id = $(this).attr("id");
 		var parts = id.split('-');
 		// Will result in partsArray[0] == '123', partsArray[1] == 'abc', etc
 		var artistID = parts[0];
 		var albumID = parts[1];
 		
-		$(".artist").css("opacity", ".5");
+		$(".artist").css("opacity", ".2");
 		$(this).css("opacity", "1");
 		
 		songsToAlbum(artistID);
@@ -385,7 +384,6 @@ $(document).ready(function(){
 		$(".genres").hide().append(musicArray[artistID].albums[0].genre);
 		$(".genres").fadeIn("fast");
 		
-		//$(".info").empty().append(musicArray[artistID].albums[0].title);
 		$("#music").empty().append("<source src=\"tunez/"+musicArray[artistID].sample+"\" type=\"audio/mp3\" />");
 		
 	};
@@ -410,9 +408,7 @@ $(document).ready(function(){
 			for(var j=0; j<musicArray[i].albums.length; j++){
 				if(musicArray[i].artist == who){
 					$("#"+i+"-"+j).css({
-						"-webkit-box-shadow": "inset 0px 5px",
-						"-moz-box-shadow": "inset 0px 5px",
-						"box-shadow": "inset 0px 5px"
+						"opacity": "1"
 					});
 				}else{
 				
