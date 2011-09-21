@@ -1,40 +1,53 @@
-<!-- hw3_v1 - I am mapping the places I have been in the last month and you are able to get driving directions between them.  I am working to make it so when you search another address, that is added to the dropdown list for directions, so you can get driving directions for there too.-->
+<!-- hw3_v2 - How do I walk there?
+In this version you can get walking directions between 2 places.
+Some locations have been predetermined, but a user can add another location to map using
+the text input area.  That location is added to the drop-down list.
+Walking directions are shown, and clicking on each direction marker gives specific directions.
+-->
 
 <!doctype html>
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
-
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="gmaps.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body onload="initialize()">
-  <div id="map_canvas" style="width:100%; height: 480px;"></div>
-	  <div>
-	    <input id="address" type="textbox" value="Sydney, NSW">
-	    <input type="button" value="Map!" onclick="codeAddress()">
-	  </div>
 	
-		<div>
-		<b>Start: </b>
+	<header id="interactive">
+		
+		<h1>How do I <em>walk</em> there?</h1>
+  
+	  <div>
+	    
+
+		<strong>Start: </strong>
 		<select id="start" onchange="calcRoute();">
-			<option value="52.37644,4.89887">Amsterdam</option>
+			<option value="40.71583,-73.95985">Brooklyn</option>
 			<option value="41.97906,-87.66674">Chicago</option>
-			<option value="34.00450,-117.73344">Chino Hills</option>
-		  <option value="40.71583,-73.95985">Home</option>
+			<option value="34.00450,-117.73344">LA</option>
 		  <option value="40.73709,-73.99211">School</option>
 		</select>
 		
-		<b>End: </b>
+		<strong>End: </strong>
 		<select id="end" onchange="calcRoute();">
-			<option value="52.37644,4.89887">Amsterdam</option>
+			<option value="40.71583,-73.95985">Brooklyn</option>
 			<option value="41.97906,-87.66674">Chicago</option>
-			<option value="34.00450,-117.73344">Chino Hills</option>
-		  <option value="40.71583,-73.95985">Home</option>
+			<option value="34.00450,-117.73344">LA</option>
 		  <option value="40.73709,-73.99211">School</option>
 		</select>
+		
+		<strong>or add your own: </strong>
+		<input id="address" type="textbox" value="New York, NY">
+    <input type="button" value="add place" onclick="codeAddress()">
 		</div>
+	</header>
+	
+	
+		<div id="map_canvas" style="width:100%; height: 480px;"></div>
+		<div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>
 </body>
 </html>
