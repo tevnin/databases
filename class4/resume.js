@@ -56,7 +56,8 @@ var who = {
 }
 
 jQuery(document).ready(function(){
-	function doResume(){
+	
+	var go = function doResume(){
 		$("#school").append("<ul>");
 			for(var i=0; i<who.school.length; i++){
 				$("#school").append("<li><h4>"+who.school[i].name+"</h4><p>"+who.school[i].year+"</p></li>");
@@ -85,6 +86,28 @@ jQuery(document).ready(function(){
 		$("#recs").append("</ul>");
 
 	}
-	doResume();
+	
+	$("#top h1").click(go);
+	
+	 /*	TOGGLE
+		$(#top h1).toggleClass("active");
+		var fontSize = parseFloat($("#top h1").css("font-size");
+		$("#top h1").css("font-size":(fontSize+1)+"px");
+		*/
+		
+		/*	HOW TO DO CALLBACK
+			var onJSONLoaded = function(json){
+				json.element;
+			}
+			$.getJSON("http://barf.com",onJSONLoaded);
+			
+			
+			or
+			
+			$.getJSON("http://barf.com",function(json){
+				json.element;
+			});
+		*/
+	
 	
 });

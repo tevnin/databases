@@ -31,6 +31,7 @@ p{
 	/*background-color:#493e5b;*/
 	margin:0;
 	/*position:fixed;*/
+	cursor:pointer;
 }
 section{
 	border-bottom:1px dotted #666;
