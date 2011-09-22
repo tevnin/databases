@@ -58,29 +58,26 @@ var who = {
 jQuery(document).ready(function(){
 	
 	var go = function doResume(){
-		$("#school").append("<ul>");
+		$("#school").append("<ul></ul>");
 			for(var i=0; i<who.school.length; i++){
-				$("#school").append("<li><h4>"+who.school[i].name+"</h4><p>"+who.school[i].year+"</p></li>");
+				$("#school ul").append("<li><h4>"+who.school[i].name+"</h4><p>"+who.school[i].year+"</p></li>");
 			}
-		$("#school").append("</ul>");
 		
-		$("#work").append("<ul>");
+		$("#work").append("<ul></ul>");
 			for(var i=0; i<who.work.length; i++){
-				$("#work").append("<li><h4>"+who.work[i].title+"</h4><p><span>"+who.work[i].company+"</span> "+
+				$("#work ul").append("<li><h4>"+who.work[i].title+"</h4><p><span>"+who.work[i].company+"</span> "+
 				who.work[i].year+"</p><p>"+who.work[i].text+"</p></li>");
 			}
-		$("#work").append("</ul>");
 		
-		$("#achievements").append("<ul>");
+		$("#achievements").append("<ul></ul>");
 			for(var i=0; i<who.achievements.length; i++){
-				$("#achievements").append("<li><h4>"+who.achievements[i].award+"</h4><p><span>"+who.achievements[i].from+"</span> "+
+				$("#achievements ul").append("<li><h4>"+who.achievements[i].award+"</h4><p><span>"+who.achievements[i].from+"</span> "+
 				who.achievements[i].year+"</p></li>");
 			}
-		$("#achievements").append("</ul>");
 		
-		$("#recs").append("<ul>");
+		$("#recs").append("<ul></ul>");
 			for(var i=0; i<who.recs.length; i++){
-				$("#recs").append("<li><h4>"+who.recs[i].name+"</h4><p><span>"+who.recs[i].title+"</span> "+
+				$("#recs ul").append("<li><h4>"+who.recs[i].name+"</h4><p><span>"+who.recs[i].title+"</span> "+
 				who.recs[i].text+"</p></li>");
 			}
 		$("#recs").append("</ul>");
