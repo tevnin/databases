@@ -1,0 +1,254 @@
+var geocoder;
+  var map;
+  var markersArray = [];
+  var markersaddArray = [];
+var output = "";
+  
+  var fav1 = new google.maps.LatLng(40.735167, -73.99375580000003);
+    var fav2 = new google.maps.LatLng(40.73539000498421, -73.99825125864413);
+    var fav3 = new google.maps.LatLng(40.73065029332028, -73.99724274805453);
+  
+  function initialize() {
+  
+  // Create an array of styles.
+  var pinkParksStyles = [
+  {
+    featureType: "road.local",
+    stylers: [
+      { hue: "#ff9900" },
+      { saturation: -42 },
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "road.arterial",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    elementType: "labels",
+    stylers: [
+      { hue: "#ffb300" },
+      { visibility: "on" }
+    ]
+  },{
+    featureType: "road.highway",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+  },{
+    elementType: "geometry",
+    stylers: [
+      { hue: "#005eff" },
+      { saturation: -30 }
+    ]
+  },{
+    featureType: "road.local",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "road.arterial",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "poi.park",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "transit.station",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "administrative.neighborhood",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "poi",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
+	
+	var pinkMapType = new google.maps.StyledMapType(pinkParksStyles,
+    {name: "Photo Map"});
+    
+    geocoder = new google.maps.Geocoder();
+    
+    var newyorkcity = new google.maps.LatLng(40.7834345, -73.9662495);
+    var myOptions = {
+      zoom: 14,
+      center: newyorkcity,
+      mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'pink_parks']
+    }
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    
+    map.mapTypes.set('pink_parks', pinkMapType);
+  map.setMapTypeId('pink_parks');
+    
+    google.maps.event.addListener(map, 'click', function(event) {
+      addMarker(event.latLng);
+    });
+    
+    
+    var contentString = "<h4>Manhattan, NY</h4>";
+        
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+        
+    var marker1 = new google.maps.Marker({
+            map: map, 
+            position: newyorkcity,
+            animation: google.maps.Animation.DROP,
+            title: "You are in Manhattan, NY"
+    });
+    
+    
+     google.maps.event.addListener(marker1, 'click', function() {
+      infowindow.open(map,marker1);
+    });
+ }//end initialize
+
+
+  function codeAddress() {
+    var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        //console.log( results[0].geometry.location);
+        var geoinfo = results[0].geometry.location;
+        /*
+console.log("variable");
+        console.log(geoinfo);
+*/
+        console.log(results[0].geometry.location.Ja);
+        console.log(results[0].geometry.location.Ka);
+        
+        var longt = results[0].geometry.location.Ja;
+        var latt = results[0].geometry.location.Ka;
+        
+        var url = "http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&per_page=500&lat="+ longt + "&lon="+latt+"&privacy_filter=1&api_key=d3ad23858f4d38ef73313214bfd49177&nojsoncallback=1";
+				console.log(url);
+
+
+				getFlickr(url);
+	
+	
+	
+	var contentString = "<h4>"+address+"</h4>";
+        
+        
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+        
+    //document.write('<div id="oylum">'+results[0].geometry.location+'</div>');
+    var marker = new google.maps.Marker({
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        position: results[0].geometry.location
+    });
+        
+       
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+    });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+    
+	}//end codeAddress
+	
+	function getFlickr(url){
+		$.get(url, null, function(data){
+			console.log(data);
+
+			//var output = "";
+
+			for(var i=0; i<10; i++){
+				photo = data.photos.photo[i];
+
+				t_url = "http://farm" + photo.farm + 
+			  ".static.flickr.com/" + photo.server + "/" + 
+			  photo.id + "_" + photo.secret + "_" + "m.jpg";
+
+				p_url = "http://www.flickr.com/photos/" + 
+			  photo.owner + "/" + photo.id;
+				
+				console.log(photo.id);
+				
+				getPhotoLatLong(photo.id, t_url, photo.title);
+				
+				output += '<a href="' + p_url + '">'+'<img alt="'+photo.title+ '"src="' + t_url+'" width="auto" height="100"/>'+'</a>';
+
+			}
+
+			//$("#pics").append(output);
+
+		 }, "JSON");
+		
+	}
+	
+	function getPhotoLatLong(id, img, title){
+		geo_url="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.geo.getLocation&api_key=d3ad23858f4d38ef73313214bfd49177&photo_id="+id+"&nojsoncallback=1";
+		$.get(geo_url, null, function(data){
+			console.log(data);
+			
+			var info = data.photo.location;
+			
+			var lat = info.latitude;
+			var lon = info.longitude;
+			
+			console.log("lat = " + lat + ", long = " + lon);
+			
+			mapPhotos(lat,lon,img, title);
+			
+			}, "JSON");
+		
+	}
+	
+	function mapPhotos(lat,lon,img, title){
+		var image = new google.maps.MarkerImage(img, new google.maps.Size(50,50), new google.maps.Point(0,0), new google.maps.Point(0,32));
+		var myLatlng = new google.maps.LatLng(lat,lon);
+		var marker = new google.maps.Marker({
+        map: map, 
+        position: myLatlng,
+        animation: google.maps.Animation.DROP,
+		icon:image,
+				title:title
+    });
+    
+    var windowContent = "<h4>"+title+"</h4><br /><img src='"+img+"' alt='"+title+"' />";
+               
+               var infowindow = new google.maps.InfoWindow({
+       content: windowContent
+     });
+     google.maps.event.addListener(marker, 'click', function() {
+     infowindow.open(map,marker);
+    });
+		
+	}
+    
+    
