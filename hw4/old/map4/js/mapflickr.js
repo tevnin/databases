@@ -1,6 +1,6 @@
-/* 	Databases Fall2011 Homework 4
+/* 	Databases Fall2001 Homework 4
 	By Tami Evnin, Nidhi Malhotra and Oylum Boran
-	Version 2.0 10/05/2011
+	09/29/2011
 */
 
 var geocoder;
@@ -138,15 +138,15 @@ var output = "";
         map.setCenter(results[0].geometry.location);
         
         var geoinfo = results[0].geometry.location;
-        
-        console.log(results[0].geometry.location.Ma);
-        console.log(results[0].geometry.location.Na);
+        //console.log(geoinfo);
+        //console.log(results[0].geometry.location.Ja);
+        //console.log(results[0].geometry.location.Ka);
         
         var longt = results[0].geometry.location.Ma;
         var latt = results[0].geometry.location.Na;
         
         var url = "http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&per_page=500&lat="+ longt + "&lon="+latt+"&privacy_filter=1&api_key=d3ad23858f4d38ef73313214bfd49177&nojsoncallback=1";
-		console.log(url);
+		//console.log(url);
 
 
 		getFlickr(url);
@@ -182,56 +182,53 @@ var output = "";
 	
 	function getFlickr(url){
 		$.get(url, null, function(data){
-			console.log(data);
+			//console.log(data);
 
 			for(var i=0; i<10; i++){
 				photo = data.photos.photo[i];
 
 				m_url = "http://farm" + photo.farm + 
 			  ".static.flickr.com/" + photo.server + "/" + 
-			  photo.id + "_" + photo.secret + "_" + "z.jpg";
+			  photo.id + "_" + photo.secret + "_" + "m.jpg";
 			  
 			  t_url = "http://farm" + photo.farm + 
 			  ".static.flickr.com/" + photo.server + "/" + 
 			  photo.id + "_" + photo.secret + "_" + "t.jpg";
-			 
 
 				p_url = "http://www.flickr.com/photos/" + 
 			  photo.owner + "/" + photo.id;
 				
-				console.log(photo.id);
+			//	console.log(photo.id);
 				
-				getPhotoLatLong(photo.id, m_url, t_url, photo.title, p_url);
+				getPhotoLatLong(photo.id, m_url, t_url, photo.title);
 				
-				output = '<a href="' + p_url + '">'+'<img alt="'+photo.title+ '"src="' + t_url+'" width="auto" height="100"/>'+'</a>';
-			
-			//$("#photodiv").append(output);
+				output += '<a href="' + p_url + '">'+'<img alt="'+photo.title+ '"src="' + t_url+'" width="auto" height="100"/>'+'</a>';
 
 			}
 
 		 }, "JSON");
 		
-	}// end getflickr
+	}
 	
-	function getPhotoLatLong(id, img, thumb, title, link){
+	function getPhotoLatLong(id, img, thumb, title){
 		geo_url="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.geo.getLocation&api_key=d3ad23858f4d38ef73313214bfd49177&photo_id="+id+"&nojsoncallback=1";
 		$.get(geo_url, null, function(data){
-			console.log(data);
+			//console.log(data);
 			
 			var info = data.photo.location;
 			
 			var lat = info.latitude;
 			var lon = info.longitude;
 			
-			console.log("lat = " + lat + ", long = " + lon);
+			//console.log("lat = " + lat + ", long = " + lon);
 			
-			mapPhotos(lat,lon,img, thumb, title, link);
+			mapPhotos(lat,lon,img, thumb, title);
 			
 			}, "JSON");
 		
-	}//end getphotolatlong
+	}
 	
-	function mapPhotos(lat,lon,img,thumb, title, link){
+	function mapPhotos(lat,lon,img,thumb, title){
 		var image = new google.maps.MarkerImage(thumb, new google.maps.Size(50,50), new google.maps.Point(0,0), new google.maps.Point(0,32));
 		var shadow = new google.maps.MarkerImage('img/shadow_wh.png', new google.maps.Size(58, 58), new google.maps.Point(0,0),new google.maps.Point(4, 36));
 		var myLatlng = new google.maps.LatLng(lat,lon);
@@ -242,29 +239,18 @@ var output = "";
 		icon:image,
 		shadow: shadow,
 		title:title
-	    });
-	    
-    var url = "http://www.google.com";
-    var windowContent = "<h4>"+title+"</h4><br /><a href=" + m_url + " target=_blank><img src='"+img+"' height=250 alt='"+title+"' /></a>";
-    
-               
-   	var infowindow = new google.maps.InfoWindow({
-       	content: windowContent
     });
- 
- 	google.maps.event.addListener(marker, 'click', function() {
-	 	//infowindow.open(map, marker);
-	 	//var div = document.getElementById('photodiv'); 
-	 	
-	 	$("#photodiv .imgContent").remove();
-	 	//$("#photodiv").hide();
-	 	$("#photodiv").hide().append("<div class='imgContent'>"+windowContent+"</div>");
-	 	$("#photodiv").fadeIn();
-		//div.style.display = 'block';
-		//myWindow=window.open("http://www.google.com", marker);
-		//myWindow.focus();
-	});
+    
+    var windowContent = "<h4>"+title+"</h4><br /><img src='"+img+"' alt='"+title+"' />";
+               
+       	var infowindow = new google.maps.InfoWindow({
+       	content: windowContent
+     });
+     
+     	google.maps.event.addListener(marker, 'click', function() {
+    	infowindow.open(map,marker);
+    });
 		
-	}//end mapphotos
+	}
     
     

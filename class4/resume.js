@@ -57,34 +57,36 @@ var who = {
 
 jQuery(document).ready(function(){
 	
-	var go = function doResume(){
-		$("#school").append("<ul></ul>");
+	//var go = 
+	function doResume(){
+		/*$("#school").append("<ul></ul>");
 			for(var i=0; i<who.school.length; i++){
 				$("#school ul").append("<li><h4>"+who.school[i].name+"</h4><p>"+who.school[i].year+"</p></li>");
-			}
+			}*/
 		
-		$("#work").append("<ul></ul>");
-			for(var i=0; i<who.work.length; i++){
-				$("#work ul").append("<li><h4>"+who.work[i].title+"</h4><p><span>"+who.work[i].company+"</span> "+
-				who.work[i].year+"</p><p>"+who.work[i].text+"</p></li>");
-			}
+		// $("#work").append("<ul></ul>");
+		// 	for(var i=0; i<who.work.length; i++){
+		// 		$("#work ul").append("<li><h4>"+who.work[i].title+"</h4><p><span>"+who.work[i].company+"</span> "+
+		// 		who.work[i].year+"</p><p>"+who.work[i].text+"</p></li>");
+		// 	}
+		// 
+		// $("#achievements").append("<ul></ul>");
+		// 	for(var i=0; i<who.achievements.length; i++){
+		// 		$("#achievements ul").append("<li><h4>"+who.achievements[i].award+"</h4><p><span>"+who.achievements[i].from+"</span> "+
+		// 		who.achievements[i].year+"</p></li>");
+		// 	}
 		
-		$("#achievements").append("<ul></ul>");
-			for(var i=0; i<who.achievements.length; i++){
-				$("#achievements ul").append("<li><h4>"+who.achievements[i].award+"</h4><p><span>"+who.achievements[i].from+"</span> "+
-				who.achievements[i].year+"</p></li>");
-			}
-		
-		$("#recs").append("<ul></ul>");
-			for(var i=0; i<who.recs.length; i++){
-				$("#recs ul").append("<li><h4>"+who.recs[i].name+"</h4><p><span>"+who.recs[i].title+"</span> "+
-				who.recs[i].text+"</p></li>");
-			}
-		$("#recs").append("</ul>");
+		// $("#recs").append("<ul></ul>");
+		// 			for(var i=0; i<who.recs.length; i++){
+		// 				$("#recs ul").append("<li><h4>"+who.recs[i].name+"</h4><p><span>"+who.recs[i].title+"</span> "+
+		// 				who.recs[i].text+"</p></li>");
+		// 			}
+		// 		$("#recs").append("</ul>");
 
 	}
 	
-	$("#top h1").click(go);
+	//$("#top h1").click(go);
+	doResume();
 	
 	 /*	TOGGLE
 		$(#top h1).toggleClass("active");
