@@ -4,8 +4,7 @@ $.get('http://hilalkoyuncu.com/mylinkedin/api.php', null, function(data){
 	$("header h1").append(data.name);
 	
 	for(var i=0; i < data.education.length; i++){
-		$("#school ul").append("<li><h4>"+data.education[i].schoolName+"</h4>");
-		$("#school ul li").append("<p>"+data.education[i].graduationDate+"</p>");
+		$("#school ul").append("<li><h4>"+data.education[i].schoolName+"</h4><p>"+data.education[i].graduationDate+"</p>");
 	}
 	
 	var inst = "institution:";

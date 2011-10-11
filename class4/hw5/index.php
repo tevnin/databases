@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Hilal's Portfolio</title>
-	<link rel="stylesheet" href="../style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="portfolio.js" type="text/javascript" charset="utf-8"></script>
