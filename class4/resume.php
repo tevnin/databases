@@ -16,13 +16,13 @@
 		"work" => array(
 			array(
 				"title" => "Teaching Fellow",
-				"company" => "Parsons The New School For Design",
+				"company" => "Parsons",
 				"year" => "2011",
 				"text" => "Taught Code in bootcamp kthxbye"
 			),
 			array(
 				"title" => "Front-end Engineering Intern",
-				"company" => "BankSimple",
+				"company" => "BS",
 				"year" => "2011",
 				"text" => "Made cool shit that never got used"
 			)
@@ -32,6 +32,11 @@
 				"award" => "Best Scene in Town Mobile Challenge Winner",
 				"from" => "7scenes & Waag Society",
 				"year" => "2011"
+			),
+			array(
+				"award" => "Winner",
+				"from" => "Me",
+				"year" => "always"
 			),
 			array(
 				"award" => "Winner",

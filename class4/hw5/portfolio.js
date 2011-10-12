@@ -1,29 +1,38 @@
-$.get('http://hilalkoyuncu.com/mylinkedin/api.php', null, function(data){
+$.get('http://hilalkoyuncu.com/mylinkedin2/api.php', null, function(data){
 	console.log(data);
 	
 	$("header h1").append(data.name);
 	
-	for(var i=0; i < data.education.length; i++){
-		$("#school ul").append("<li><h4>"+data.education[i].schoolName+"</h4><p>"+data.education[i].graduationDate+"</p>");
+	//$("#school").click(function(){
+		for(var i=0; i < data.education.length; i++){
+			$("#school ul").append("<li><h4>"+data.education[i].schoolName+"</h4><p>"+data.education[i].graduationDate+"</p>");
+		}
+	//});
+	
+	for(var i=0; i < data.workExperience.length; i++){
+		$("#work ul").append("<li><h4>"+data.workExperience[i].jobTitle+"</h4><p><span>"+data.workExperience[i].institution+"</span></p><p>"+data.workExperience[i].date+"</p");
+
 	}
 	
-	var inst = "institution:";
-	for(var i=0; i < data.workExperience.length; i++){
-		$("#work ul").append("<li><h4>"+data.workExperience[i].jobTitle+"</h4>");
-		$("#work ul li").append("<p><span>"+data.workExperience[i].inst+"</span></p>");
-		$("#work ul li").append("<p>"+data.workExperience[i].date+"</p>");
-	}
+	var awardN, dates;
 	
 	for(var i=0; i < data.awards.length; i++){
-		$("#achievements ul").append("<li><h4>"+data.awards[i].awardName+"</h4>");
+		awardN = data.awards[i].awardName;
+		$("#achievements ul").append("<li id='"+i+"'><h4>"+data.awards[i].awardName+"</h4>");
+		
 		for(var j=0; j< data.awards[i].dateReceived.length; j++){
-			$("#achievements ul li").append("<p>"+data.awards[i].dateReceived[j]+"</p>");
+			dates = data.awards[i].dateReceived[j];
+			
+				$("#achievements ul #"+i).append("<p>"+dates+"</p>");
+			
 		}
+		
+		
 	}
 	
+	
 	for(var i=0; i < data.recommendations.length; i++){
-		$("#recs ul").append("<li><h4>"+data.recommendations[i].PersonName+"</h4>");
-		$("#recs ul li").append("<p>"+data.recommendations[i].Value+"</p>");
+		$("#recs ul").append("<li><h4>"+data.recommendations[i].PersonName+"</h4><p>"+data.recommendations[i].Value+"</p>");
 	}
 	
 }, "JSONP");
