@@ -1,0 +1,134 @@
+/* global stuff */
+body {
+	margin:0;
+	padding:0;
+	font-family: 'Vast Shadow', cursive;
+}
+header {
+	background:#000;
+	color:#fff;
+	width:100%;
+	margin:0px auto 20px auto;
+	padding:10px 0;
+	-webkit-box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
+	-moz-box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
+	box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
+}
+footer {
+	width:960px;
+	margin:10px auto 0 auto;
+}
+#wrapper{
+	/*background-color:#00f;*/
+	width:960px;
+	margin:20px auto 0 auto;
+}
+#highscores {
+	width:960px;
+	margin:20px auto;
+}
+#highscores ol {
+	text-align:center;
+	list-style:none;
+}
+#highscores ol li {
+	margin-left:0;
+}
+h1 {
+	font-size:40px;
+	text-align:center;
+}
+h2 {
+	font-size:18px;
+	text-align:right;
+	margin-right:365px;
+	
+}
+h3 {
+	font-size:14px;
+	
+}
+span {
+	font-size:12px;
+}
+
+/* input */
+input[type="text"] {
+	width:300px;
+	margin:20px auto 20px 320px;
+	text-align:center;
+}
+/* game */
+#game {
+	width:960px;
+	height:400px;
+	margin:0 auto;
+
+}
+#choose {
+	width: 300px;
+	margin:0 auto;
+}
+
+/* buttons */
+.btn {
+	display:inline-block;
+	cursor:pointer;
+	padding:10px;
+	margin:10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background:red;
+}
+
+.btn:hover {
+	background:lime;
+}
+#highscore-button, #back-button {
+	margin-left:420px;
+}
+
+/* results, which appear inside the game screen */
+#results {
+	/*border:1px solid red;*/
+	width:500px;
+	height:140px;
+	position:relative;
+	margin:20px auto;
+	border:1px dotted #000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#player-hand,
+#cpu-hand {
+	height:121px;
+	width:230px;
+}
+
+#cpu-hand {
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+/* hands */
+#player-hand.rock { background:url('../img/left-rock.jpg') no-repeat center; }
+#player-hand.paper { background:url('../img/left-paper.jpg') no-repeat center; }
+#player-hand.scissors { background:url('../img/left-scissors.jpg') no-repeat center; }
+#cpu-hand.rock { background:url('../img/right-rock.jpg') no-repeat center; }
+#cpu-hand.paper { background:url('../img/right-paper.jpg') no-repeat center; }
+#cpu-hand.scissors { background:url('../img/right-scissors.jpg') no-repeat center; }
+
+
+#result-text {
+	display:block;
+}
+
+
+/* hide the high scores screen */
+#highscores {
+	display:none;
+}

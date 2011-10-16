@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock Paper Scissors</title>
+	
+		<link href='http://fonts.googleapis.com/css?family=Vast+Shadow' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
+		<link rel="stylesheet" type="text/css" href="css/game.css" />
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	
+	<body>
+		<!--<div id="wrapper">-->
+			<header>
+				<h1>Rock Paper Scissors</h1>
+				<h2>A Databases Game</h2>
+			</header>
+		
+			<section id="game">
+				<input id="playerName" type="text" name="name" value="Player Name" />
+				<div id="choose">
+					<span class="game-choice btn" data-value="rock">Rock</span>
+					<span class="game-choice btn" data-value="paper">Paper</span>
+					<span class="game-choice btn" data-value="scissors">Scissors</span>
+				</div>
+			
+				<div id="results">
+					<div id="player-hand"></div>
+					<div id="cpu-hand"></div>
+				
+					<strong id="result-text"></strong>
+					<h3>Consecutive Wins: <span id="wins">0</span></h3>
+				</div>
+			
+				<footer>
+					<span id="highscore-button" class="btn">High Scores</span>
+				</footer>
+			</section>
+		
+			<section id="highscores">
+				<h2>Most Consecutive Wins</h2>
+			
+				<ol id="highscore-list">
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+					<li>Jamie: 10</li>
+				</ol>
+			
+				<footer>
+					<span id="back-button" class="btn">Back</span>
+				</footer>
+			</section>
+		<!--</div>-->
+	</body>
+</html>
