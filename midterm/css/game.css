@@ -37,6 +37,7 @@ footer {
 h1 {
 	font-size:40px;
 	text-align:center;
+	cursor:pointer;
 }
 h2 {
 	font-size:18px;
