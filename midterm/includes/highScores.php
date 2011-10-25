@@ -12,8 +12,6 @@
 		print_r("<li><h3>" . $winner['name'] . "</h3> <p>has won " . $winner['wins'] . " of " . $winner['games'] . " games</p></li>");
 	}
 	print_r("</ol>");
-	
-	//echo (string)$winners;
 ?>
 
 

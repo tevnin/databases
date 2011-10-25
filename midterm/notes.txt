@@ -1,0 +1,30 @@
+put functions in header.php
+on home page, require mongo.php
+include mongo for each page type
+include a write php file
+	form method="post", action is php response file
+	take data -> store as array -> push into object (update the mongo object)
+	$object->update(where, what('$push'));
+	
+
+
+user gets to page
+writes name (that name needs to go to DB)
+	db.players.insert({name:"player2",wins:0,losses:0,ties:0,games:0});
+picks R, P,or S
+wins, tie, loses (that win/loss needs to go to DB)
+	db.players.update({"name":"player1"},{$inc:{"losses":1,"games":2}});
+leaderboard
+	db.players.find().sort({wins:-1});
+
+{
+	"name":"tami",
+	"wins":"0",
+	"losses":"0",
+	"games":"0"
+}
+
+
+{"4e9f3579618bd9b9861ef976":{"_id":{"$id":"4e9f3579618bd9b9861ef976"},"name":"tami"},"4e9f359a618bd9b9861ef977":{"_id":{"$id":"4e9f359a618bd9b9861ef977"},"name":"player2"},"4e9f35a7618bd9b9861ef978":{"_id":{"$id":"4e9f35a7618bd9b9861ef978"},"name":"player3"},"4e9f35ae618bd9b9861ef979":{"_id":{"$id":"4e9f35ae618bd9b9861ef979"},"name":"player1"},"4e9f54d57b4df9030e000000":{"_id":{"$id":"4e9f54d57b4df9030e000000"},"name":"Jamie"},"4e9f55c27b4df9000e020000":{"_id":{"$id":"4e9f55c27b4df9000e020000"},"name":"Jamie"},"4e9f5d3d7b4df9a116020000":{"_id":{"$id":"4e9f5d3d7b4df9a116020000"},"name":"jonathan"},"4e9f60687b4df9a016010000":{"_id":{"$id":"4e9f60687b4df9a016010000"},"name":"Player Name"},"4e9f609c7b4df9a316010000":{"_id":{"$id":"4e9f609c7b4df9a316010000"},"name":"Player Name"},"4e9f60d77b4df99b16050000":{"_id":{"$id":"4e9f60d77b4df99b16050000"},"name":"tamalama"},"4e9f60e57b4df99b16060000":{"_id":{"$id":"4e9f60e57b4df99b16060000"},"name":"tamalama"},"4e9f60eb7b4df99b16070000":{"_id":{"$id":"4e9f60eb7b4df99b16070000"},"name":"tamalama"},"4e9f61d37b4df9a216070000":{"_id":{"$id":"4e9f61d37b4df9a216070000"},"name":"Player Name"},"4e9f58ba7b4df9030e020000":{"_id":{"$id":"4e9f58ba7b4df9030e020000"},"name":"me"},"4e9f5ee47b4df9040e030000":{"_id":{"$id":"4e9f5ee47b4df9040e030000"},"name":"lalaa"},"4e9f5f387b4df9000e040000":{"_id":{"$id":"4e9f5f387b4df9000e040000"},"name":"dfklajdf"},"4e9f5fea7b4df99b16040000":{"_id":{"$id":"4e9f5fea7b4df99b16040000"},"name":"sdf"},"4e9f603a7b4df9a216060000":{"_id":{"$id":"4e9f603a7b4df9a216060000"},"name":"Player Name"},"4e9f62067b4df9000e050000":{"_id":{"$id":"4e9f62067b4df9000e050000"},"name":"Player Name"},"4e9f62157b4df9000e060000":{"_id":{"$id":"4e9f62157b4df9000e060000"},"name":"Player Name"},"4e9f62687b4df9a316020000":{"_id":{"$id":"4e9f62687b4df9a316020000"},"name":"Player Name"}}
+
+
