@@ -4,7 +4,8 @@ var onPageReady = function() {
 	var win = 0;
 	var loss = 0;
 	var tie = 0;
-
+	var playerName;
+	
 	$("#results").hide();
 
 	// who beats who
@@ -12,6 +13,8 @@ var onPageReady = function() {
 	
 	$("#game #highscore-button").click(function() { 
 		goToScreen("highscores");
+		playerName = $("#playerName").val();
+		$("#highscores ol").append("<li><h3>"+playerName+"</h3><p>has won "+consecutiveWins+" of "+consecutiveWins+" games</p>");
 	});
 	$("#highscores #back-button").click(function() { goToScreen("game");});
 	$("header h1").click(function() { goToScreen("game");});
@@ -64,12 +67,12 @@ var onPageReady = function() {
 	// this is where you come in. send consecutiveWins to the server and get back the high scores. update the list.
 	
 	var updateHighScores = function() {
-		var playerName = $("#playerName").val();
-		console.log(playerName + ": " + consecutiveWins);
+		playerName = $("#playerName").val();
+		//console.log(playerName + ": " + consecutiveWins);
 		
 		var testObject = {name:playerName,wins:win,losses:loss,ties:tie};
 		var jsonString = JSON.stringify(testObject);
-		console.log(jsonString);
+		//console.log(jsonString);
 		
 		//get and post for PHP both going to address
 		//$.post() for sending data (appending query string does get)
