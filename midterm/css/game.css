@@ -170,7 +170,12 @@ input[type="text"] {
 	background:url('../img/nkotb.png') no-repeat center;
 	width:350px;
 }
-
+#text{
+	text-align:center;
+}
+#band-text span{
+	color:#f00;
+}
 #result-text {
 	color:#f00;
 	display:block;

@@ -14,8 +14,11 @@
 					<div id="player-hand"></div>
 					<div id="cpu-hand"></div>
 				
-					<strong id="result-text"></strong>
-					<h3>Consecutive Wins: <span id="wins">0</span></h3>
+					<section id="text">
+						<strong id="band-text"></strong>
+						<strong id="result-text"></strong>
+						<h3>Consecutive Wins: <span id="wins">0</span></h3>
+					</section>
 				</div>
 			
 				<footer>

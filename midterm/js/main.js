@@ -15,8 +15,12 @@ var onPageReady = function() {
 		goToScreen("highscores");
 		
 		$.post("./includes/highScores.php", function(data) {
-		   $("#highscores ol").html(data);
-		});
+			$("#highscores ol").empty();
+			for(var i=0; i<data.length; i++){
+				$("#highscores ol").append("<li><h4>" + data[i].name + "</h4> <p>has won " + data[i].wins + " games</p></li>");
+			}
+
+		},"json");
 
 	});
 	
@@ -38,6 +42,17 @@ var onPageReady = function() {
 	
 	var calculateResults = function(player,computer) {
 		var result;
+		var band1;
+		var band2;
+		
+		if(computer == "paper"){
+			band2 = "Backstreet Boys";
+		}else if(computer == "rock"){
+			band2 = "N*Sync";
+		}else{
+			band2 = "New Kids on the Block";
+		}
+		
 		if(computer == player) {
 			win = 0;
 			loss = 0;
@@ -46,10 +61,13 @@ var onPageReady = function() {
 			
 			if(player == "paper"){
 				result = "larger than life"
+				band1 = "Backstreet Boys";
 			}else if(player == "rock"){
 				result = "i just wanna be with you";
+				band1 = "N*Sync";
 			}else{
 				result = "hangin' tough";
+				band1 = "New Kids on the Block";
 			}
 			
 		}
@@ -61,10 +79,13 @@ var onPageReady = function() {
 
 			if(player == "paper"){
 				result = "backstreet's back!"
+				band1 = "Backstreet Boys";
 			}else if(player == "rock"){
 				result = "you\'re tearin\' up my heart!";
+				band1 = "N*Sync";
 			}else{
 				result = "you got the right stuff, baby!";
+				band1 = "New Kids on the Block";
 			}
 			
 			consecutiveWins++;
@@ -78,10 +99,13 @@ var onPageReady = function() {
 			consecutiveWins = 0;
 			if(player == "paper"){
 				result = "ain\'t nothin' but a heartache"
+				band1 = "Backstreet Boys";
 			}else if(player == "rock"){
 				result = "it ain\'t no lie, bye, bye, bye.";
+				band1 = "N*Sync";
 			}else{
 				result = "stop playing those games";
+				band1 = "New Kids on the Block";
 			}
 			
 		}
@@ -90,6 +114,7 @@ var onPageReady = function() {
 		console.log(result);
 		
 		$("#player-hand").removeClass("rock").removeClass("paper").removeClass("scissors").addClass(player);
+		$("#band-text").html(band1 + " <span>vs.</span> " + band2);
 		$("#cpu-hand").removeClass("rock").removeClass("paper").removeClass("scissors").addClass(computer);
 		$("#result-text").text(result);
 		
