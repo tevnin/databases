@@ -5,14 +5,14 @@ body {
 	font-family: 'Vast Shadow', cursive;
 }
 header {
-	background:#000;
-	color:#fff;
-	width:100%;
-	margin:0px auto 20px auto;
+/*	background:#000;
+	color:#fff;*/
+	width:960px;
+	margin:50px auto 20px auto;
 	padding:10px 0;
-	-webkit-box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
+/*	-webkit-box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
 	-moz-box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
-	box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);
+	box-shadow: 0px 1px 10px 1px rgba(150, 150, 150, 1);*/
 }
 footer {
 	width:960px;
@@ -28,36 +28,64 @@ footer {
 	margin:20px auto;
 }
 #highscores ol {
-	text-align:center;
-	list-style:none;
+	
 }
 #highscores ol li {
-	margin-left:0;
+	margin:10px auto;
 }
 h1 {
-	font-size:40px;
+	font-size:55px;
 	text-align:center;
 	cursor:pointer;
+}
+h1 span{
+	color:#f00;
+	font-size:55px;
+	font-family:'Gochi Hand', cursive;
+	
+/*	-webkit-transform: rotate(30deg);	
+	-moz-transform: rotate(30deg);
+	-ms-transform: rotate(30deg);
+	-o-transform: rotate(30deg);
+	transform: rotate(30deg);*/
 }
 h2 {
 	font-size:18px;
 	text-align:right;
-	margin-right:365px;
+	margin-right:20px;
 	
 }
 h3 {
 	font-size:14px;
 	
 }
+h4{
+	color:#f00;
+	font-family:'Gochi Hand', cursive;
+	font-size:20px;
+	display:inline;
+}
 span {
 	font-size:12px;
 }
-
+p{
+	display:inline;
+}
 /* input */
 input[type="text"] {
-	width:300px;
-	margin:20px auto 20px 320px;
-	text-align:center;
+	width:250px;
+	height:30px;
+	margin:20px auto;
+	padding:3px;
+	
+	border:1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	-webkit-box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
+	-moz-box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
+	box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
 }
 /* game */
 #game {
@@ -68,7 +96,7 @@ input[type="text"] {
 }
 #choose {
 	width: 300px;
-	margin:0 auto;
+	margin:0;
 }
 
 /* buttons */
@@ -76,7 +104,7 @@ input[type="text"] {
 	display:inline-block;
 	cursor:pointer;
 	padding:10px;
-	margin:10px;
+	margin:10px 30px 10px 0;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -84,20 +112,27 @@ input[type="text"] {
 }
 
 .btn:hover {
-	background:lime;
+	background:#f77;
 }
-#highscore-button, #back-button {
-	margin-left:420px;
-}
+#highscore-button{
+	background:#000;
+	color:#fff;
+}		
+#highscore-button:hover{
+	background:#666;
+	color:#fff;
+}				
 
 /* results, which appear inside the game screen */
 #results {
 	/*border:1px solid red;*/
-	width:500px;
-	height:140px;
+	float:right;
+	width:600px;
+	height:360px;
 	position:relative;
 	margin:20px auto;
-	border:1px dotted #000;
+	top:-200px;
+	/*border:1px dotted #000;*/
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -105,8 +140,8 @@ input[type="text"] {
 
 #player-hand,
 #cpu-hand {
-	height:121px;
-	width:230px;
+	height:100%;
+	width:300px;
 }
 
 #cpu-hand {
@@ -116,16 +151,31 @@ input[type="text"] {
 }
 
 /* hands */
-#player-hand.rock { background:url('../img/left-rock.jpg') no-repeat center; }
+/*#player-hand.rock { background:url('../img/left-rock.jpg') no-repeat center; }
 #player-hand.paper { background:url('../img/left-paper.jpg') no-repeat center; }
 #player-hand.scissors { background:url('../img/left-scissors.jpg') no-repeat center; }
 #cpu-hand.rock { background:url('../img/right-rock.jpg') no-repeat center; }
 #cpu-hand.paper { background:url('../img/right-paper.jpg') no-repeat center; }
-#cpu-hand.scissors { background:url('../img/right-scissors.jpg') no-repeat center; }
+#cpu-hand.scissors { background:url('../img/right-scissors.jpg') no-repeat center; }*/
 
+#player-hand.rock,#cpu-hand.rock { 
+	background:url('../img/nsync.png') no-repeat center;
+	width:350px;
+}
+#player-hand.paper,#cpu-hand.paper {
+	background:url('../img/bsb2.png') no-repeat center;
+	width:350px;
+}
+#player-hand.scissors,#cpu-hand.scissors { 
+	background:url('../img/nkotb.png') no-repeat center;
+	width:350px;
+}
 
 #result-text {
+	color:#f00;
 	display:block;
+	font-family:'Gochi Hand', cursive;
+	font-size:20px;
 }
 
 

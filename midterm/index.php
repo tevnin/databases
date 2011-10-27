@@ -2,11 +2,12 @@
 <?php include( 'includes/header.php' ) ?>
 		
 			<section id="game">
-				<input id="playerName" type="text" name="name" value="Player Name" />
+				<h3>Player Name</h3>
+				<input id="playerName" type="text" name="name" />
 				<div id="choose">
-					<span class="game-choice btn" data-value="rock">Rock</span>
-					<span class="game-choice btn" data-value="paper">Paper</span>
-					<span class="game-choice btn" data-value="scissors">Scissors</span>
+					<span class="game-choice btn" data-value="rock">nsync</span>
+					<span class="game-choice btn" data-value="paper">bsb</span>
+					<span class="game-choice btn" data-value="scissors">nkotb</span>
 				</div>
 			
 				<div id="results">
@@ -23,9 +24,11 @@
 			</section>
 		
 			<section id="highscores">
-				<h2>Most Consecutive Wins</h2>
-			
-				<?php include( "includes/highScores.php") ?>
+				<h3>top teeny boppers</h3>
+					<ol>
+					</ol>
+				<?php include( 'includes/footer.php' ) ?>
+			</section>
 				
-			<?php include( 'includes/footer.php' ) ?>
+			
 				

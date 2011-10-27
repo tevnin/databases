@@ -3,7 +3,7 @@
 	<head>
 		<title>Rock Paper Scissors</title>
 	
-		<link href='http://fonts.googleapis.com/css?family=Vast+Shadow' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Vast+Shadow|Gochi+Hand' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
 		<link rel="stylesheet" type="text/css" href="css/game.css" />
 		
@@ -14,6 +14,6 @@
 	<body>
 		<!--<div id="wrapper">-->
 			<header>
-				<h1>Rock Paper Scissors</h1>
-				<h2>A Databases Game</h2>
+				<h1>battle of the <span>90's boy</span> bands</h1>
+				<h2>a databases game</h2>
 			</header>

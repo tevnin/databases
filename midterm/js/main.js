@@ -13,9 +13,14 @@ var onPageReady = function() {
 	
 	$("#game #highscore-button").click(function() { 
 		goToScreen("highscores");
-		playerName = $("#playerName").val();
-		$("#highscores ol").append("<li><h3>"+playerName+"</h3><p>has won "+consecutiveWins+" of "+consecutiveWins+" games</p>");
+		
+		$.post("./includes/highScores.php", function(data) {
+		   $("#highscores ol").html(data);
+		});
+
 	});
+	
+	
 	$("#highscores #back-button").click(function() { goToScreen("game");});
 	$("header h1").click(function() { goToScreen("game");});
 	
@@ -24,9 +29,9 @@ var onPageReady = function() {
 
 		var random=Math.floor(Math.random()*3);
 		var computerChoice; 
-		if(random == 0) computerChoice = "paper";
-		else if(random == 1) computerChoice = "rock";
-		else computerChoice = "scissors";
+		if(random == 0) computerChoice = "paper"; //bsb
+		else if(random == 1) computerChoice = "rock"; //nsync
+		else computerChoice = "scissors"; //nkotb
 		
 		calculateResults(playerChoice,computerChoice);
 	});
@@ -34,23 +39,50 @@ var onPageReady = function() {
 	var calculateResults = function(player,computer) {
 		var result;
 		if(computer == player) {
-			tie=1;
+			win = 0;
+			loss = 0;
+			tie = 1;
 			updateHighScores();
-			result = "It's a tie.";
+			
+			if(player == "paper"){
+				result = "larger than life"
+			}else if(player == "rock"){
+				result = "i just wanna be with you";
+			}else{
+				result = "hangin' tough";
+			}
 			
 		}
 		else if(gameRules[player] == computer) {
-			win=1;
+			win = 1;
+			loss = 0;
+			tie = 0;
 			updateHighScores();
-			result = "You win!";
+
+			if(player == "paper"){
+				result = "backstreet's back!"
+			}else if(player == "rock"){
+				result = "you\'re tearin\' up my heart!";
+			}else{
+				result = "you got the right stuff, baby!";
+			}
+			
 			consecutiveWins++;
 			
 		}
 		else {
-			loss=1;
+			win = 0;
+			loss = 1;
+			tie = 0;
 			updateHighScores();
 			consecutiveWins = 0;
-			result = "You Lose.";
+			if(player == "paper"){
+				result = "ain\'t nothin' but a heartache"
+			}else if(player == "rock"){
+				result = "it ain\'t no lie, bye, bye, bye.";
+			}else{
+				result = "stop playing those games";
+			}
 			
 		}
 
@@ -70,15 +102,15 @@ var onPageReady = function() {
 		playerName = $("#playerName").val();
 		//console.log(playerName + ": " + consecutiveWins);
 		
-		var testObject = {name:playerName,wins:win,losses:loss,ties:tie};
-		var jsonString = JSON.stringify(testObject);
+		var playerInfo = {name:playerName,wins:win,losses:loss,ties:tie};
+		var jsonString = JSON.stringify(playerInfo);
 		//console.log(jsonString);
 		
 		//get and post for PHP both going to address
 		//$.post() for sending data (appending query string does get)
 		//could also do $.get() to send something to PHP, for actions
 		//uses query string, appends things to the URL
-		$.post("./includes/mongo.php", testObject );
+		$.post("./includes/writeTo.php", playerInfo);
 		//{data:jsonString}); 
 		//{name:playerName,wins:win,losses:loss,ties:tie,games:win+loss+tie} );
 			}
