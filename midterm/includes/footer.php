@@ -1,5 +1,5 @@
 <footer>
-	<span id="back-button" class="btn">Back</span>
+	<p>by <a href="http://tamievnin.com">Tami Evnin</a></p>
 </footer>
 </section>
 <!--</div>-->

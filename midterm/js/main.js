@@ -7,6 +7,12 @@ var onPageReady = function() {
 	var playerName;
 	
 	$("#results").hide();
+	$("#game").hide();
+	$("#play-button").click(function(){
+		$("#game").fadeIn(1000);
+		$("#intro").fadeOut(1000);
+		
+	});
 
 	// who beats who
 	var gameRules = { paper:"rock",rock:"scissors",scissors:"paper" };
@@ -33,8 +39,8 @@ var onPageReady = function() {
 
 		var random=Math.floor(Math.random()*3);
 		var computerChoice; 
-		if(random == 0) computerChoice = "paper"; //bsb
-		else if(random == 1) computerChoice = "rock"; //nsync
+		if(random == 0) computerChoice = "paper"; //nsync
+		else if(random == 1) computerChoice = "rock"; //bsb
 		else computerChoice = "scissors"; //nkotb
 		
 		calculateResults(playerChoice,computerChoice);
@@ -46,9 +52,9 @@ var onPageReady = function() {
 		var band2;
 		
 		if(computer == "paper"){
-			band2 = "Backstreet Boys";
-		}else if(computer == "rock"){
 			band2 = "N*Sync";
+		}else if(computer == "rock"){
+			band2 = "Backstreet Boys";
 		}else{
 			band2 = "New Kids on the Block";
 		}
@@ -60,16 +66,15 @@ var onPageReady = function() {
 			updateHighScores();
 			
 			if(player == "paper"){
-				result = "larger than life"
-				band1 = "Backstreet Boys";
-			}else if(player == "rock"){
-				result = "i just wanna be with you";
+				result = "i just wanna be with you - tie!";
 				band1 = "N*Sync";
+			}else if(player == "rock"){
+				result = "larger than life - tie!"
+				band1 = "Backstreet Boys";
 			}else{
-				result = "hangin' tough";
+				result = "hangin' tough - tie!";
 				band1 = "New Kids on the Block";
 			}
-			
 		}
 		else if(gameRules[player] == computer) {
 			win = 1;
@@ -78,13 +83,13 @@ var onPageReady = function() {
 			updateHighScores();
 
 			if(player == "paper"){
-				result = "backstreet's back!"
-				band1 = "Backstreet Boys";
-			}else if(player == "rock"){
-				result = "you\'re tearin\' up my heart!";
+				result = "you\'re tearin\' up my heart! - N*Sync wins!";
 				band1 = "N*Sync";
+			}else if(player == "rock"){
+				result = "backstreet's back! - BSB wins!"
+				band1 = "Backstreet Boys";
 			}else{
-				result = "you got the right stuff, baby!";
+				result = "you got the right stuff, baby! - NKOTB wins!";
 				band1 = "New Kids on the Block";
 			}
 			
@@ -98,13 +103,13 @@ var onPageReady = function() {
 			updateHighScores();
 			consecutiveWins = 0;
 			if(player == "paper"){
-				result = "ain\'t nothin' but a heartache"
-				band1 = "Backstreet Boys";
-			}else if(player == "rock"){
-				result = "it ain\'t no lie, bye, bye, bye.";
+				result = "it ain\'t no lie, bye, bye, bye. - N*Sync loses!";
 				band1 = "N*Sync";
+			}else if(player == "rock"){
+				result = "ain\'t nothin' but a heartache - BSB loses!"
+				band1 = "Backstreet Boys";
 			}else{
-				result = "stop playing those games";
+				result = "stop playing those games - NKOTB loses!";
 				band1 = "New Kids on the Block";
 			}
 			
@@ -127,7 +132,7 @@ var onPageReady = function() {
 		playerName = $("#playerName").val();
 		//console.log(playerName + ": " + consecutiveWins);
 		
-		var playerInfo = {name:playerName,wins:win,losses:loss,ties:tie};
+		var playerInfo = {name:playerName,wins:win,losses:loss,ties:tie,consec:consecutiveWins};
 		var jsonString = JSON.stringify(playerInfo);
 		//console.log(jsonString);
 		

@@ -10,7 +10,7 @@
 	//$games = $win+$loss+$tie;
 
 	if($playerName === ""){
-		$playerName = "teen";
+		$playerName = "random teen";
 	}
 
 	$db->players->update(array("name" => $playerName), array('$inc'=> array("wins" => $win,"losses" => $loss,"ties" => $tie,"games" => 1)), true);

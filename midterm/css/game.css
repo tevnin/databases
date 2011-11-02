@@ -1,4 +1,9 @@
 /* global stuff */
+html{
+	margin:0;
+	padding:0;
+	background: url('../img/grunge_wall.png');
+}
 body {
 	margin:0;
 	padding:0;
@@ -16,23 +21,12 @@ header {
 }
 footer {
 	width:960px;
-	margin:10px auto 0 auto;
+	position:absolute;
+	margin:10px auto 0 136px;
+	bottom:20px;
+	text-align:right;
 }
-#wrapper{
-	/*background-color:#00f;*/
-	width:960px;
-	margin:20px auto 0 auto;
-}
-#highscores {
-	width:960px;
-	margin:20px auto;
-}
-#highscores ol {
-	
-}
-#highscores ol li {
-	margin:10px auto;
-}
+
 h1 {
 	font-size:55px;
 	text-align:center;
@@ -56,7 +50,7 @@ h2 {
 	
 }
 h3 {
-	font-size:14px;
+	font-size:18px;
 	
 }
 h4{
@@ -70,6 +64,10 @@ span {
 }
 p{
 	display:inline;
+}
+a{
+	color:#000;
+	text-decoration:none;
 }
 /* input */
 input[type="text"] {
@@ -86,6 +84,37 @@ input[type="text"] {
 	-webkit-box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
 	-moz-box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
 	box-shadow: inset 1px 1px 5px 1px rgba(100, 100, 100, 0.3);
+}
+#wrapper{
+	/*background-color:#00f;*/
+	width:960px;
+	margin:20px auto 0 auto;
+}
+/* intro */
+#intro{
+	background:rgba(255,255,255,0.4);
+	width:70%;
+	position:absolute;
+	/*height:300px;*/
+	margin:0 auto 0 170px;
+	padding:20px;
+	text-align:center;
+}
+#intro ol li {
+		/*list-style:decimal !important;*/
+		margin:20px auto;
+		font-size:14px;
+}
+#intro ol li ul li {
+		margin:10px auto;
+}
+#intro ol li span {
+	color:#f00;
+	font-family: 'Gochi Hand', cursive;
+	font-size: 20px;
+}
+#intro ol li ul li span {
+		font-size:30px;
 }
 /* game */
 #game {
@@ -104,7 +133,7 @@ input[type="text"] {
 	display:inline-block;
 	cursor:pointer;
 	padding:10px;
-	margin:10px 30px 10px 0;
+	margin:10px 25px 10px 0;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -121,14 +150,25 @@ input[type="text"] {
 #highscore-button:hover{
 	background:#666;
 	color:#fff;
-}				
-
+}
 /* results, which appear inside the game screen */
+#highscores{
+	width:400px;
+	padding-left:20px;
+	margin:20px auto;
+}
+#highscores ol {
+	
+}
+#highscores ol li {
+	margin:10px auto 10px 25px;
+	list-style:decimal !important;
+}
 #results {
 	/*border:1px solid red;*/
 	float:right;
 	width:600px;
-	height:360px;
+	height:350px;
 	position:relative;
 	margin:20px auto;
 	top:-200px;
@@ -150,6 +190,7 @@ input[type="text"] {
 	right:0;
 }
 
+
 /* hands */
 /*#player-hand.rock { background:url('../img/left-rock.jpg') no-repeat center; }
 #player-hand.paper { background:url('../img/left-paper.jpg') no-repeat center; }
@@ -159,11 +200,11 @@ input[type="text"] {
 #cpu-hand.scissors { background:url('../img/right-scissors.jpg') no-repeat center; }*/
 
 #player-hand.rock,#cpu-hand.rock { 
-	background:url('../img/nsync.png') no-repeat center;
+	background:url('../img/bsb2.png') no-repeat center;
 	width:350px;
 }
 #player-hand.paper,#cpu-hand.paper {
-	background:url('../img/bsb2.png') no-repeat center;
+	background:url('../img/nsync.png') no-repeat center;
 	width:350px;
 }
 #player-hand.scissors,#cpu-hand.scissors { 
@@ -179,6 +220,7 @@ input[type="text"] {
 #result-text {
 	color:#f00;
 	display:block;
+	margin:10px auto;
 	font-family:'Gochi Hand', cursive;
 	font-size:20px;
 }
