@@ -1,0 +1,5 @@
+1. To attach tags to a place
+SELECT tags.tag,places.* FROM tags JOIN places_to_tags ON tags.id=places_to_tags.tag_id JOIN places ON places.id=places_to_tags.place_id
+
+2.To attach notes to a place
+SELECT notes.note,places.* FROM notes JOIN places_to_notes ON notes.id=places_to_notes.note_id JOIN places ON places.id=places_to_notes.place_id

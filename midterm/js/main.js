@@ -18,9 +18,14 @@ var onPageReady = function() {
 	var gameRules = { paper:"rock",rock:"scissors",scissors:"paper" };
 	
 	$("#game #highscore-button").click(function() { 
-		goToScreen("highscores");
+		// goToScreen("highscores");
 		
+		//$.post("./includes/highScores.php?sort=wins"); then in PHP if($_GET["sort"] == "wins")
+		//can add $.get() variables to $.post()
+		//DRY = Don't Repeat Yourself
 		$.post("./includes/highScores.php", function(data) {
+			//having "goToScreen()" here loads the screen once $.post() has completed
+			goToScreen("highscores");
 			$("#highscores ol").empty();
 			for(var i=0; i<data.length; i++){
 				$("#highscores ol").append("<li><h4>" + data[i].name + "</h4> <p>has won " + data[i].wins + " games</p></li>");

@@ -1,0 +1,30 @@
+<?php 
+
+	$db = new Mongo();
+	
+	$collection = $db->mini4sq;
+?>
+
+//mongo
+//db.locations.find().explain(); //gives details
+//.ensureIndex({});
+//db.locations.find({location:{$near:[100,150]}).limit(1);
+//db.runCommand({geoNear:'location', near:[100,100]}); //gives distance, sorted by distance
+// $in = array includes at least one thing associated with my array
+// $all = array includes all of the things associated with my array
+//db.locations.mapReduce(function());
+
+telnet
+(net cat) nc
+
+small ec2 instance
+backup onto your laptop
+mongohq
+
+//10gen office hours - Wednesdays 4-6:30pm
+//134 5th Ave., 3rd Floor
+
+
+//2 choices for final
+// 1. incorporate DB component into Thesis project
+// 2. have to use either mySQL or mongo - theme of Memory or remembering

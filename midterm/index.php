@@ -1,4 +1,3 @@
-<!-- nathan -->
 <?php include( 'includes/header.php' ) ?>
 
 			<section id="intro">
