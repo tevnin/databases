@@ -14,7 +14,7 @@
 			</form>
 	</section>
 
-	<h3 id="start"><span>get started</span></h3>
+	<h3 id="start" class="saveUser"><span>get started</span></h3>
 	
 	<section id="flow"></section>
 	

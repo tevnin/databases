@@ -154,7 +154,7 @@ section {
 	
 }
 .question h4 {
-	background-color:rgba(59,66,76,0.3);
+	background-color:rgba(59,66,76,0.4);
 	color:#fff;
 	margin: 20px auto 0 auto;
 	text-align: center;	
@@ -176,7 +176,7 @@ section {
 }
 p.arrow {
 	margin-top:30px;
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(94,181,188,0.5);
 	color:#3B424C;
 	padding:20px;
 	
@@ -188,6 +188,10 @@ p.arrow {
 	-webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+p.arrow:hover {
+	background-color:rgba(68,156,163,0.5);
+	color:#3B424C;
 }
 .left {
 /*	width:470px;
@@ -223,9 +227,8 @@ p.arrow {
 	font-weight:800;
 	font-size:80px;
 	padding: 20px;
-	
-	border:1px dashed #000;
-	border:1px dashed #000;
+
+	/*border:1px dashed #000;*/
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;

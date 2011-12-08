@@ -1,9 +1,5 @@
 $(document).ready(function(){
-	
-	//assynchronous
-	//xml http request (kernal of ajax, wrapped into json)
-	//$.ajax = more specific
-	
+
 	var userFlow = new Array();
 	var userName = "unknown";
 	var userEmail;
@@ -11,42 +7,34 @@ $(document).ready(function(){
 	var updateUser;
 	
 	/****** REGISTER USER *******/
-	// $("#register h3").click(function(){
-	// 	$("#regForm").fadeToggle();
-	// });
-	
-	// $("#submitBtn").click(function(){
-	// 	userName = $("#name").val();
-	// 	userEmail = $("#email").val();
-	// 	userProject = $("#project").val();
-	// 
-	// 	register();
-	// 	//$("#register").html("<p>"+userName+" registered & logged in!").fadeIn();
-	// 	
-	// });
-	
-
-	
 	/****** START FLOWCHART *******/
 	$("#start").live("click",function(){
 		userName = $("#name").val();
 		userEmail = $("#email").val();
 		userProject = $("#project").val();
+		userFlow = [];
 		
 		$("#intro").animate({"margin-top": "-=436px"}, "slow").fadeOut(1000);
 		$("#flow").empty().fadeIn(1000);
 		start();
 		
+		var classQ = $(this).attr("class");
+		if(classQ == "saveUser"){
+			register();
+			$("#register").html("<h3>"+userName+" registered & logged in!</h3>").fadeIn();
+		}
+		
+		
 		$(this).animate({
 		    position: "relative",
 		    "text-align": "left",
 				"font-size":"16px"
-		  }, 1000, function() {
+		 }, 1000, function() {
 		    $(this).html("re-start");
-		  });
+				$(this).removeClass("saveUser");
+		 });
 
-		register();
-		$("#register").html("<h3>"+userName+" registered & logged in!</h3>").fadeIn();
+
 		
 	});
 	
@@ -89,25 +77,7 @@ $(document).ready(function(){
 						if(data[i].after.first == ""){
 							//highlight answer
 							$("#flow").append("<div id='q" + data[i].number+ "' class='answer'><h4>"+data[i].text+"</h4>");
-							$("#q" + data[i].number).fadeIn(1000);
-							
-							
-							$("#register h3").animate({opacity:0},200,"linear",function(){
-							  $(this).animate({opacity:1},200,"linear",function(){
-									$(this).animate({opacity:0},200,"linear",function(){
-										$(this).animate({opacity:1},200,"linear",function(){
-												$(this).animate({opacity:0},200,"linear",function(){
-													$(this).animate({opacity:1},200,"linear",function(){
-															$(this).animate({opacity:0},200,"linear",function(){
-																$(this).animate({opacity:1},200);
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-							
+							$("#q" + data[i].number).fadeIn(1000);							
 							register();
 						}else{
 							//show next question
@@ -144,9 +114,7 @@ $(document).ready(function(){
 		
 		var userInfo = {name:userName,email:userEmail,project:userProject,flow:userFlow};
 
-		$.post("./includes/saveFlow.php", userInfo, function(data){
-			//$("#register").html("<p>"+userName+" registered & logged in!").fadeIn();
-		});
+		$.post("./includes/saveFlow.php", userInfo);
 		
 	}
 
