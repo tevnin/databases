@@ -8,39 +8,45 @@ $(document).ready(function(){
 	var userName = "unknown";
 	var userEmail;
 	var userProject = "1";
+	var updateUser;
 	
 	/****** REGISTER USER *******/
-	$("#register h2").click(function(){
-		$("#regForm").fadeToggle();
-	});
+	// $("#register h3").click(function(){
+	// 	$("#regForm").fadeToggle();
+	// });
 	
-	$("#submitBtn").click(function(){
-		userName = $("#name").val();
-		userEmail = $("#email").val();
-		userProject = $("#project").val();	
-		var userInfo = {name:userName,email:userEmail,project:userProject};
+	// $("#submitBtn").click(function(){
+	// 	userName = $("#name").val();
+	// 	userEmail = $("#email").val();
+	// 	userProject = $("#project").val();
+	// 
+	// 	register();
+	// 	//$("#register").html("<p>"+userName+" registered & logged in!").fadeIn();
+	// 	
+	// });
+	
 
-		$.post("./includes/register.php", userInfo, function(data){
-			$("#register").html("<p>"+userName+" registerd & logged in!").fadeIn();
-		});
-		
-		
-		userFlow = userInfo;
-	});
 	
 	/****** START FLOWCHART *******/
 	$("#start").live("click",function(){
+		userName = $("#name").val();
+		userEmail = $("#email").val();
+		userProject = $("#project").val();
 		
-		$("#flow").empty();
+		$("#intro").animate({"margin-top": "-=436px"}, "slow").fadeOut(1000);
+		$("#flow").empty().fadeIn(1000);
 		start();
 		
 		$(this).animate({
 		    position: "relative",
 		    "text-align": "left",
-				"font-size":"20px"
+				"font-size":"16px"
 		  }, 1000, function() {
 		    $(this).html("re-start");
 		  });
+
+		register();
+		$("#register").html("<h3>"+userName+" registered & logged in!</h3>").fadeIn();
 		
 	});
 	
@@ -50,7 +56,6 @@ $(document).ready(function(){
 
 	/****** GET NEXT QUESTION *******/
 	$(".arrow").live("click",function(){
-		//jumpScroll();
 		var pID = $(this).attr("id");
 		$(this).css("background-color","#FF5335");
 		console.log("CLICKED! "+ pID);
@@ -83,14 +88,30 @@ $(document).ready(function(){
 						
 						if(data[i].after.first == ""){
 							//highlight answer
-							$("#flow").append("<div id='q" + data[i].number+ "' class='answer'><h3>"+data[i].text+"</h3>");
+							$("#flow").append("<div id='q" + data[i].number+ "' class='answer'><h4>"+data[i].text+"</h4>");
 							$("#q" + data[i].number).fadeIn(1000);
 							
-							var updateUser = {name: userName, project:userProject, flow: userFlow};
-							$.post("./includes/saveFlow.php", updateUser);
+							
+							$("#register h3").animate({opacity:0},200,"linear",function(){
+							  $(this).animate({opacity:1},200,"linear",function(){
+									$(this).animate({opacity:0},200,"linear",function(){
+										$(this).animate({opacity:1},200,"linear",function(){
+												$(this).animate({opacity:0},200,"linear",function(){
+													$(this).animate({opacity:1},200,"linear",function(){
+															$(this).animate({opacity:0},200,"linear",function(){
+																$(this).animate({opacity:1},200);
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+							
+							register();
 						}else{
 							//show next question
-							$("#flow").append("<div id='q" + data[i].number+ "' class='question'><h3>"+data[i].text+"</h3>");
+							$("#flow").append("<div id='q" + data[i].number+ "' class='question'><h4>"+data[i].text+"</h4>");
 							$("#q" + data[i].number).fadeIn(1000);
 						}
 						
@@ -119,8 +140,14 @@ $(document).ready(function(){
 
 	}
 	
-	function jumpScroll() {
-	   	window.scroll(0,150); // horizontal and vertical scroll targets
+	function register(){
+		
+		var userInfo = {name:userName,email:userEmail,project:userProject,flow:userFlow};
+
+		$.post("./includes/saveFlow.php", userInfo, function(data){
+			//$("#register").html("<p>"+userName+" registered & logged in!").fadeIn();
+		});
+		
 	}
 
 });

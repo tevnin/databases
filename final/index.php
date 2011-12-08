@@ -3,14 +3,21 @@
 ?>
 
 	<!-- BODY goes here-->
+	<section id="intro">
+		<h2>How do I get my project funded?</h2>
+			<form id="regForm" method="POST">
+				<ul>
+					<li><input name="name" id="name" value="name" onfocus="if (this.value=='name') this.value = ''"/></li>
+					<li><input name="email" id="email" value="email" onfocus="if (this.value=='email') this.value = ''"></li>
+					<li><input name="project" id="project" value="project name" onfocus="if (this.value=='project name') this.value = ''"></li>
+				</ul>
+			</form>
+	</section>
 
-	<h2 id="start">start</h2>
-	<!-- <img src="img/flowchart_service_transparent.png" width="960" height="614" alt="Flowchart Service Transparent"> -->
+	<h3 id="start"><span>get started</span></h3>
 	
 	<section id="flow"></section>
-	<!--<canvas id="chart" width="960" height="614"></canvas>-->
 	
-	<div id="chart"></div>
 
 <?php
 	include( 'includes/footer.php' );
