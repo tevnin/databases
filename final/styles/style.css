@@ -1,3 +1,13 @@
+/*color consultants:
+http://kuler.adobe.com/
+http://0to255.com/
+http://www.color-hex.com/
+
+css3 consultants:
+http://css3generator.com/
+http://lab.simurai.com/css/carveme/
+*/
+
 html {
 	background: url('../img/project_papper.png');
 	/*background-color:#B29C85;*/
@@ -46,12 +56,6 @@ h3 {
 	font-size:16px;
 	font-weight:400;
 	color:#3B424C;
-	
-/*	-webkit-text-stroke: 0;
-	color: transparent;
-	-webkit-background-clip: text;
-	background-color: rgba(255,83,53,0.9);
-	text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px;*/
 }
 h4 {
 	font-size:18px;
@@ -117,7 +121,7 @@ nav {
 	list-style:none;
 	margin:0 auto 0 -34px;
 }
-#start{
+#start, #replay{
 	position:absolute;
 	color:#FF5335;
 	width:960px;
@@ -125,8 +129,22 @@ nav {
 	font-size:50px;
 	text-align:center;
 }
-#start:hover {
+#start:hover, #replay:hover {
 	color:#ff8d79;
+}
+#start span {
+	background-color: rgba(59, 66, 76, 0.2);
+	padding: 0.4px 20px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+#replay {
+	display:none;
+	margin-top:20px;
 }
 #register {
 	float: right;
@@ -190,7 +208,7 @@ p.arrow {
 	box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.3);
 }
 p.arrow:hover {
-	background-color:rgba(68,156,163,0.5);
+	background-color:rgba(94,181,188,0.5);
 	color:#3B424C;
 }
 .left {

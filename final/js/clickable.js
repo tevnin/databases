@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var userFlow = new Array();
+	var userFlow = [];
 	var userName = "unknown";
 	var userEmail;
 	var userProject = "1";
@@ -12,7 +12,7 @@ $(document).ready(function(){
 		userName = $("#name").val();
 		userEmail = $("#email").val();
 		userProject = $("#project").val();
-		userFlow = [];
+		//userFlow = [];
 		
 		$("#intro").animate({"margin-top": "-=436px"}, "slow").fadeOut(1000);
 		$("#flow").empty().fadeIn(1000);
@@ -77,7 +77,8 @@ $(document).ready(function(){
 						if(data[i].after.first == ""){
 							//highlight answer
 							$("#flow").append("<div id='q" + data[i].number+ "' class='answer'><h4>"+data[i].text+"</h4>");
-							$("#q" + data[i].number).fadeIn(1000);							
+							$("#q" + data[i].number).fadeIn(1000);
+							$("#register").html("<h3>replay "+userName+"'s flow</h3>");					
 							register();
 						}else{
 							//show next question
@@ -111,11 +112,25 @@ $(document).ready(function(){
 	}
 	
 	function register(){
-		
+		console.log(userFlow);
 		var userInfo = {name:userName,email:userEmail,project:userProject,flow:userFlow};
 
 		$.post("./includes/saveFlow.php", userInfo);
 		
 	}
+	
+	/****** REPLAY FLOW *******/
+	//$("#replay").click(fu
+		//replayFlow(userFlow)
+		
+	//);
+	
+	$("#register").click(function(){
+		$("#flow").css("overflow","visible");
+		$(".answer").animate({"margin-left": "0px"}, "slow");
+		$(".question").css("height","200px").animate({"margin-left":"0px"}, 3000);
+		
+	});
+	
 
 });
