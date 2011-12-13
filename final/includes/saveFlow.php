@@ -2,19 +2,18 @@
 	require('mongo.php');
 	
 	//$newUser = array();
-  $userName["name"] = $_POST["name"];
-  $userEmail['email'] = $_POST["email"];
-	$userProject['project'] = $_POST["project"];
-	$userFlow['flow'] = $_POST["flow"];
+  $userName = $_POST["name"];
+  $userEmail = $_POST["email"];
+	$userProject = $_POST["project"];
 	
-	if(empty($userFlow)) {
-		// $users->update(array('name'=>$_POST['name'],'email'=>$_POST['email']),array('name'=>$_POST['name'],'email'=>$_POST['email']),
-		// 		true);
-		require('register.php');
-	}else{
+	if(isset( $_POST["flow"] )){
+		$userFlow['flow'] = $_POST["flow"];
 		$users->update(array('name'=>$userName,'email'=>$userEmail),	array('$push'=>array('project'=>array('title'=>$userProject,"flow"=>$userFlow))),
 		true);
+	}else{
+		require('register.php');
 	}
+
 	
 
 ?>

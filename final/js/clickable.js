@@ -56,7 +56,7 @@ $(document).ready(function(){
 		userFlow += id + " ";
 		//console.log(userFlow);
 		
-		$(".question").animate({"margin-left": "-=960px"}, "slow");
+		$(".question").animate({"margin-top": "-=520px"}, "slow");
 	});
 	
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
 							//highlight answer
 							$("#flow").append("<div id='q" + data[i].number+ "' class='answer'><h4>"+data[i].text+"</h4>");
 							$("#q" + data[i].number).fadeIn(1000);
-							$("#register").html("<h3>replay "+userName+"'s flow</h3>");					
+							$("#register").html("<h3><span class='replay'>replay</span> "+userName+"'s flow</h3>");					
 							register();
 						}else{
 							//show next question
@@ -119,16 +119,11 @@ $(document).ready(function(){
 		
 	}
 	
-	/****** REPLAY FLOW *******/
-	//$("#replay").click(fu
-		//replayFlow(userFlow)
-		
-	//);
-	
+	/****** REPLAY FLOW *******/	
 	$("#register").click(function(){
 		$("#flow").css("overflow","visible");
-		$(".answer").animate({"margin-left": "0px"}, "slow");
-		$(".question").css("height","200px").animate({"margin-left":"0px"}, 3000);
+		//$(".answer").animate({"margin-top": "0px"}, "slow");
+		$(".question").css("height","200px").animate({"margin-top":"0px"}, 3000);
 		
 	});
 	

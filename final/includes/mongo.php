@@ -2,6 +2,8 @@
 
 	// connect to dbFinal database
 	$mongo = new Mongo();
+	
+	/***** CHANGE DB NAME (dbFinal) to other DB name if necessary! ******/
 	$db = $mongo->dbFinal;
 	
 	//do stuff in flow collection
