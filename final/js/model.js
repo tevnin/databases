@@ -8,9 +8,8 @@ $(document).ready(function(){
 	
 	/****** REGISTER USER *******/
 	/****** START FLOWCHART *******/
-	$("#start").live("click",function(){
+	$("#start_bm").live("click",function(){
 		userName = $("#name").val();
-		userEmail = $("#email").val();
 		userProject = $("#project").val();
 		//userFlow = [];
 		

@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title>DB final</title>
+		<title>workflow</title>
 		
 		<link href='http://fonts.googleapis.com/css?family=Calligraffitti|Open+Sans:400,800,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
